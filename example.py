@@ -1,15 +1,15 @@
 from main import * 
 
-class Page(Node):
+class LogEventAction(Node):
     def run(self, context):
         print("User signed Up!")
-        return context.next()
+        return context.run()
 
 
 class EmailAction(Node):
     def run(self, context):
         print("Sending Email...")
-        return context.next()
+        return context.run()
 
 
 class MyWorkflow(Workflow):
@@ -20,19 +20,17 @@ class MyWorkflow(Workflow):
 
     def build(self, builder):
         builder\
-            .add_trigger("SignUp") \
-            .subscribe(EmailAction)
+            .trigger("signup", subscribers=[
+                builder.action(EmailAction),
+            ]) \
+            .action(LogEventAction)
 
-def sign_up_user():
-    print("Signing up user...")
-    
-    pass
+
 
 host = create_workflow_definition()
 host.register_workflow(MyWorkflow())
 # host.start()
 
 wid = host.start_workflow("MyWorkflow")
-
-sign_up_user()
+host.publish_event('signup')
 # host.stop()
