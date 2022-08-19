@@ -1,3 +1,5 @@
+A dummy program that demostrates the key elements of a workflow engine
+
 ### Components of workflow engine:
 
 - Workflow Definition
