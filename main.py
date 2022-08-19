@@ -4,6 +4,7 @@ class WorkflowBuilder:
         self.event_dict = dict()
 
     def trigger(self, event_type, subscribers): 
+        # action() return self?
         self.event_dict[event_type] = subscribers
         return self
 
@@ -24,7 +25,7 @@ class WorkflowHost:
     def register_workflow(self, workflow):
         self.workflow_dict[workflow.id] = workflow
     
-    def start_workflow(self, workflow_id):
+    def build_workflow(self, workflow_id):
         try:
             workflow = self.workflow_dict.get(workflow_id)
         except KeyError:
@@ -83,4 +84,4 @@ class Node():
 
 
 def create_workflow_definition():
-    return Workflow()
+    return WorkflowHost()

@@ -1,15 +1,17 @@
-Components of workflow engine:
+### Components of workflow engine:
 
-1. Wporkflow Definition
-2. Task Queue
-3. Timers ---> for timeouts
-4. State ---> for Persistence
+- Workflow Definition
+- Task Queue
+- Timers ---> for timeouts
+- State ---> for Persistence
 
-Elements of the workflow instance
+### Elements of the workflow instance
 
-1. Trigger
-2. Action
-3. Conditions
+- Trigger
+- Action
+- Conditions
+
+### Implementation
 
 Use the Builder Pattern to create the workflow Definition
 and the observer pattern to model how the nodes of the workflow interact
